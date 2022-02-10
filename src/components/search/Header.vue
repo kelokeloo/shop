@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="logo">
-      <span class="iconfont icon-tianchongxing-"></span>
+    <div class="back" @click="back">
+      <span class="iconfont icon-back"></span>
     </div>
-    <div class="search" @click="jumpSearch">
+    <div class="search">
       <input type="text" :placeholder="searchPlaceholder" autofocus>
-      <span class="iconfont icon-sousuo"></span>
+      <span class="iconfont icon-sousuo"  @click="Search"></span>
     </div>
     <div class="service">
       <span class="iconfont icon-xiaomi"></span>
@@ -21,10 +21,15 @@ const searchPlaceholder = ref('港风圆领卫衣')
 
 const router = useRouter()
 
-const jumpSearch = ()=>{
-  searchPlaceholder.value
-  router.push('/search')
+const Search = ()=>{
+  console.log('search');
 }
+
+const back = ()=>{
+  router.back()
+}
+
+
 
 
 
@@ -68,7 +73,7 @@ const jumpSearch = ()=>{
   }
 }
 
-.container .logo span {
+.container .back span {
   width: 1rem;
   height: 1rem;
   font-size: 1.7rem;

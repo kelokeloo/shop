@@ -16,7 +16,8 @@ console.log(route.path);
 
 const tabBarShow = computed(()=>{
   // 以这些url开头的，都显示tabbar
-  const reg = /^\/(\/home)|(\/)|(\/catergory)|(\/shopcar)|(\/personal)/;
+  const reg = /(^\/home.*)|(^\/category.*)|(^\/shopcar.*)|(^\/personal.*)/;
+  
   return reg.test(route.path)
 })
 
