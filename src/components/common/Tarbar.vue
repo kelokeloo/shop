@@ -56,6 +56,7 @@ const tabChange = (value: number)=>{
   bottom: 0;
   padding: .5rem 0;
   box-shadow: 0px 0px 3px 1px #eee;
+  background-color: white;
 }
 
 .tabbar ul {
@@ -70,7 +71,7 @@ const tabChange = (value: number)=>{
   flex-direction: column;
   align-items: center;
   transition: all .3s;
-  border-bottom: 0px solid #E67E22;
+  border-bottom: 0px solid #F44336;
 }
 
 
@@ -84,7 +85,7 @@ const tabChange = (value: number)=>{
 
 .actived {
   transform: translateY(-10%);
-  border-bottom: 3px solid #E67E22 !important;
+  border-bottom: 3px solid #F44336 !important;
 }
 
 </style>

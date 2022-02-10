@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1644375267629') format('truetype');
+  font-family: "iconfont"; /* Project id 3173509 */
+  src: url('iconfont.woff2?t=1644394254598') format('woff2'),
+       url('iconfont.woff?t=1644394254598') format('woff'),
+       url('iconfont.ttf?t=1644394254598') format('truetype');
 }
 
 .iconfont {
@@ -9,6 +11,34 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-a-dianshijixinwenxinxi:before {
+  content: "\e75b";
+}
+
+.icon-a-yifufenggezhuti:before {
+  content: "\e764";
+}
+
+.icon-zuanshi:before {
+  content: "\e765";
+}
+
+.icon-a-shuguoshuzhiwuziranjienengjianpaieryanghuatan:before {
+  content: "\e775";
+}
+
+.icon-a-gouwudaigouwu:before {
+  content: "\e77a";
+}
+
+.icon-tianchongxing-:before {
+  content: "\e641";
+}
+
+.icon-gouwu:before {
+  content: "\e677";
 }
 
 .icon-dingdan:before {
@@ -25,5 +55,17 @@
 
 .icon-shouye:before {
   content: "\e8b9";
+}
+
+.icon-sousuo:before {
+  content: "\e8ba";
+}
+
+.icon-xiaomi:before {
+  content: "\e8bf";
+}
+
+.icon-tubiaozhizuomoban:before {
+  content: "\e62e";
 }
 
