@@ -11,8 +11,10 @@ declare module 'vue' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    GoodsList: typeof import('./src/components/common/GoodsList.vue')['default']
     Header: typeof import('./src/components/home/Header.vue')['default']
     HotBox: typeof import('./src/components/home/HotBox.vue')['default']
+    ListBox: typeof import('./src/components/common/ListBox.vue')['default']
     ShowBox1: typeof import('./src/components/home/ShowBox1.vue')['default']
     Tarbar: typeof import('./src/components/common/Tarbar.vue')['default']
   }

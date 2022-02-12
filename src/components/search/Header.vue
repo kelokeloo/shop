@@ -4,8 +4,10 @@
       <span class="iconfont icon-back"></span>
     </div>
     <div class="search">
-      <input type="text" :placeholder="searchPlaceholder" autofocus>
-      <span class="iconfont icon-sousuo"  @click="Search"></span>
+      <input type="text" :placeholder="placeHolder" autofocus 
+      ref="inputRef"
+      v-bind:value="searchData" @keydown.enter="Search">
+      <span class="iconfont icon-sousuo" @click="Search"></span>
     </div>
     <div class="service">
       <span class="iconfont icon-xiaomi"></span>
@@ -13,16 +15,33 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive, computed, VueElement } from 'vue'
 import { useRouter } from 'vue-router';
 
 
-const searchPlaceholder = ref('港风圆领卫衣')
-
 const router = useRouter()
 
+interface propsApi {
+  searchData: string,
+  placeHolder: string,
+}
+const props = withDefaults(defineProps<propsApi>(), {
+  searchData: '',
+  placeHolder: ''
+})
+
+
+
+const emit = defineEmits(['search'])
+
+
+const inputRef = ref(null)
+
+
 const Search = ()=>{
-  console.log('search');
+  // 获取触发事件的目标元素，再获取目标元素它的值
+  
+  emit('search', (inputRef.value as unknown as HTMLInputElement).value)
 }
 
 const back = ()=>{

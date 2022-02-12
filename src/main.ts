@@ -5,6 +5,9 @@ import router from './router/index'
 
 import './style/global.scss'
 
+// nprogress
+import 'nprogress/nprogress.css'
+
 // pinia
 
 import { createPinia } from 'pinia'

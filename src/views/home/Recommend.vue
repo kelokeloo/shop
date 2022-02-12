@@ -117,7 +117,6 @@ const guessGoodsData = reactive<guessGoodsApi[]>([])
 
 const getGuessGoodsData = async()=>{
   const res = await http.get('/api/home/recommend/guess')
-  console.log(res);
   
   ;(res.data as Array<guessGoodsApi>).forEach(item=>{
     item.imgUrl = store.serverUrl + item.imgUrl

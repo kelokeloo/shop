@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {path: '/category', component: ()=>import('@/views/Category.vue')},
   {path: '/shopcar', component: ()=>import('@/views/ShopCar.vue')},
   {path: '/personal', component: ()=>import('@/views/Personal.vue')},
-  {path: '/search', component: ()=>import('@/views/search.vue')}
+  {path: '/search', name: 'search', component: ()=>import('@/views/search.vue')}
 ]
 
 const router = createRouter({
