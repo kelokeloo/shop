@@ -1,5 +1,5 @@
 <template>
-  <div class="cartBox">
+  <div class="cartBox" @click="goToPage">
     <div class="img">
       <img :src="imgUrl">
     </div>
@@ -9,8 +9,18 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: 'Cart2'
+})
+</script>
+
+
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 interface PropsApi {
+  id?: number,
   imgUrl?: string,
   name?: string,
   price?: string
@@ -22,6 +32,14 @@ const props = withDefaults(defineProps<PropsApi>(), {
  name: '高端茶具', 
  price: '99'
 })
+
+const router = useRouter()
+
+const goToPage = ()=>{
+  router.push('/detail/' + props.id)
+  
+}
+
 
 </script>
 <style scoped lang="scss">

@@ -58,10 +58,115 @@ router.get('/api/goods', function(req, res, next) {
       { id: 13, name:'旺仔牛奶', info:'超级好吃的旺仔牛奶！！！', price:'7.9', imgUrl:'/images/goods/旺仔牛奶.webp', tag: '老铁推荐'},
       { id: 14, name:'箱子', info:'航天限定', price:'59.9', imgUrl:'/images/goods/箱子.webp', tag: '爆款'},
       { id: 15, name:'鞋子', info:'舒适透气', price:'399', imgUrl:'/images/goods/鞋子.webp', tag: '销冠款'},
-      
     ]
   })
 });
+
+// 分类页数据
+
+router.get('/api/category', function(req, res, next) {
+  res.send({
+    code: 200,
+    data: [
+      { 
+        id: 1, 
+        title: '推荐分类', 
+        list: [
+          { id:0 , imgUrl: '/images/goods/iphone.jpg', name: '耳机'}, 
+          { id:1, imgUrl: '/images/goods/iphone.jpg', name: '游戏本'},
+          { id:2, imgUrl: '/images/goods/iphone.jpg', name: '手机'},
+        ]
+      },
+      { 
+        id: 2, 
+        title: '电脑办公', 
+        list: [
+          { id:0 , imgUrl: '/images/goods/iphone.jpg', name: '设计师电脑'}, 
+          { id:1, imgUrl: '/images/goods/iphone.jpg', name: '游戏本'},
+          { id:2, imgUrl: '/images/goods/iphone.jpg', name: '轻薄本'},
+        ]
+      },
+      { 
+        id: 3, 
+        title: '手机', 
+        list: [
+          { id:0 , imgUrl: '/images/goods/iphone.jpg', name: 'iphone'}, 
+          { id:1, imgUrl: '/images/goods/iphone.jpg', name: '小米'},
+          { id:2, imgUrl: '/images/goods/iphone.jpg', name: '华为'},
+          { id:3, imgUrl: '/images/goods/iphone.jpg', name: 'oppo'},
+          { id:4, imgUrl: '/images/goods/iphone.jpg', name: 'vivo'},
+        ]
+      },
+      { 
+        id: 4, 
+        title: '电器', 
+        list: [
+          { id:0 , imgUrl: '/images/goods/iphone.jpg', name: '格力'}, 
+          { id:1, imgUrl: '/images/goods/iphone.jpg', name: '美的'},
+          { id:2, imgUrl: '/images/goods/iphone.jpg', name: '松下'},
+          { id:3, imgUrl: '/images/goods/iphone.jpg', name: '西门子'},
+          { id:4, imgUrl: '/images/goods/iphone.jpg', name: '小米'},
+        ]
+      },
+    ]
+  })
+});
+
+// 
+
+const searchInfo = (id)=>{
+  if(id === 1){
+    return {
+      code: 200,
+      data: {
+        id: 1,
+        name: '鞋子',
+        info: '百搭韩版',
+        price: 199,
+        support: [
+          '满99包邮',
+          '48小时发货'
+        ],
+        image: [
+          '/images/goods/%E9%9E%8B%E5%AD%90detail1.webp',
+          '/images/goods/%E9%9E%8B%E5%AD%90detail2.webp',
+          '/images/goods/%E9%9E%8B%E5%AD%90detail3.webp',
+          '/images/goods/%E9%9E%8B%E5%AD%90detail4.webp',
+        ]
+      }
+    }
+  }
+  else 
+  return {
+    code: 200,
+    data: {
+      id: id,
+      name: '布鞋',
+      info: '百搭韩版',
+      price: 99,
+      support: [
+        '满99包邮',
+        '48小时发货'
+      ],
+      image: [
+        '/images/goods/%E9%9E%8B%E5%AD%90detail1.webp',
+        '/images/goods/%E9%9E%8B%E5%AD%90detail2.webp',
+        '/images/goods/%E9%9E%8B%E5%AD%90detail3.webp',
+        '/images/goods/%E9%9E%8B%E5%AD%90detail4.webp',
+      ]
+    }
+  }
+}
+
+router.get('/api/detail/:id', function(req, res, next) {
+  console.log(req.params);
+
+  // 根据id查找商品信息
+  const goodInfo = searchInfo(Number(req.params.id))
+
+  res.send(goodInfo)
+});
+
 
 
 

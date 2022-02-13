@@ -14,6 +14,14 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'SearchHeader'
+})
+</script>
+
+
 <script setup lang="ts">
 import { ref, reactive, computed, VueElement } from 'vue'
 import { useRouter } from 'vue-router';

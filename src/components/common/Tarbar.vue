@@ -15,6 +15,14 @@
     </ul>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Tarbar",
+});
+</script>
+
+
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router'

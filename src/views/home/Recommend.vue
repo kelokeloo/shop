@@ -38,6 +38,12 @@
 
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: 'Recommend'
+})
+</script>
 <script setup lang="ts">
 import ShowBox from '@/components/home/ShowBox1.vue'
 import Cart1 from '@/components/common/Cart1.vue'
@@ -108,6 +114,7 @@ getHotBoxData()
 
 // 猜你喜欢
 interface guessGoodsApi {
+  id: number,
   imgUrl?: string,
   msg?: string,
   price?: number

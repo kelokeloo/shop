@@ -1,14 +1,28 @@
 <template>
   <div>
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition>
+        <keep-alive include="detail">
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
     <TarbarVue v-if="tabBarShow"></TarbarVue>
   </div>
 </template>
+<script lang="ts">
+export default defineComponent({
+  name: 'App'
+})
+</script>
+
+
 <script setup lang="ts">
 import TarbarVue from './components/common/Tarbar.vue';
-import { computed } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useRouter, useRoute, RouteLocationRaw } from 'vue-router';
 
+import Detail from './views/detail/Detail.vue';
 
 const router = useRouter()
 const route = useRoute()
