@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div class="login">
+    <div class="login" v-if="!isLogin">
       <span @click="handleClick">登录 / 注册</span>
     </div>
+    <div class="account" v-else>
+      <span>欢迎, {{userName}}</span>
+      <span class="iconfont icon-tuichu logout" @click="logout"></span>
+    </div>
+
     <div class="other">
       <ul>
         <li>地址管理</li>
@@ -11,20 +16,47 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 export default defineComponent({
   name: 'Personal'
 })
 </script>
 <script setup lang="ts">
-
+import { computed } from "vue";
 import { useRouter } from "vue-router";
+import globalStore from "../store/global";
 // 跳转到登录页面
 
 const router = useRouter()
 const handleClick = ()=>{
  router.push('/login')
 }
+
+const userName = ref('')
+
+// isLogin 
+
+const store = globalStore()
+
+const isLogin = computed(()=>{
+  if(store.isLogin){
+    const name = window.sessionStorage.getItem('userName')!
+    userName.value = name
+  }
+  
+  return store.isLogin
+})
+
+
+
+
+// 登出
+const logout = ()=>{
+  window.sessionStorage.removeItem('token')
+  window.sessionStorage.removeItem('userName')
+  store.setIsLogin(false)
+}
+
 
 </script>
 <style scoped lang="scss">
@@ -49,6 +81,22 @@ const handleClick = ()=>{
     background-color: #ECEFF1;
     padding: .5rem;
     border-radius: 5px;
+  }
+}
+
+.account {
+  padding: 1rem;
+  background-color: #E57373;
+  height: 10rem;
+  span {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  display: flex;
+  span.logout {
+    margin-left: auto;
+    color: white;
+    transform: translateY(.3rem);
   }
 }
 </style>

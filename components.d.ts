@@ -6,15 +6,18 @@ declare module 'vue' {
   export interface GlobalComponents {
     Cart1: typeof import('./src/components/common/Cart1.vue')['default']
     Cart2: typeof import('./src/components/common/Cart2.vue')['default']
+    Choice: typeof import('./src/components/shopCar/Choice.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    GoodCard: typeof import('./src/components/shopCar/goodCard.vue')['default']
     GoodsList: typeof import('./src/components/common/GoodsList.vue')['default']
     Header: typeof import('./src/components/home/Header.vue')['default']
     HotBox: typeof import('./src/components/home/HotBox.vue')['default']
     ListBox: typeof import('./src/components/common/ListBox.vue')['default']
+    ShopCart: typeof import('./src/components/shopCar/shopCart.vue')['default']
     ShowBox1: typeof import('./src/components/home/ShowBox1.vue')['default']
     Tarbar: typeof import('./src/components/common/Tarbar.vue')['default']
   }
