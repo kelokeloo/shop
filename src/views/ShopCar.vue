@@ -3,13 +3,14 @@
     <header class="header">
       <span class="iconfont icon-back"></span>
       <span>购物车</span>
-      <span>编辑</span>
+      <span @click="isEdit=!isEdit">编辑</span>
     </header>
     <div class="body">
-      <div class="bodyHeader">
+      <div class="bodyHeader" v-if="listArray.length">
         <ChoiceVue v-model:choice="globalChoice"></ChoiceVue>
         <span>商品</span>
       </div>
+      <div v-else>购物车中暂时没有商品</div>
       <template v-for="(item, index) in listArray" :key="item.id">
         <shopCartVue
           :img-url="item.imgUrl"
@@ -27,7 +28,10 @@
     
     <div class="totalPrice">
       <div>￥{{totalPrice}}</div>
-      <div>支付</div>
+      <div v-if="!isEdit">支付</div>
+      <div v-else
+        @click="deleteGoods"  
+      >删除</div>
     </div>
   </div>
 </template>
@@ -110,6 +114,20 @@ const totalPrice = computed(()=>{
   })
   return total
 })
+
+// 购物车编辑功能
+const isEdit = ref(false)
+
+const deleteGoods = ()=>{
+  // 逆向删除
+  for(let i = choicelist.length; i >= 0; i--){
+    if(choicelist[i]){
+      listArray.splice(i, 1)
+      choicelist.splice(i, 1)
+      countList.splice(i, 1)
+    }
+  }
+}
 
 
 
