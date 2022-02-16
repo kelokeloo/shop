@@ -1,6 +1,6 @@
 <template>
   <div class="cardBox">
-    <ChoiceVue :choice="choice"></ChoiceVue>
+    <ChoiceVue v-bind:choice="choice" @update:choice="handleChoice"></ChoiceVue>
     <div class="img">
       <img :src="imgUrl" alt="img">
     </div>
@@ -41,18 +41,23 @@ const props = withDefaults(defineProps<propsApi>(), {
   count: 0
 })
 
-const emit = defineEmits(['setCount'])
+const emit = defineEmits(['update:choice','update:count'])
 
 
 // 加减
 const sub = ()=>{
   if(props.count <= 1) return
-  emit('setCount', props.count - 1)
+  emit('update:count', props.count - 1)
 }
 const add = ()=>{
-  emit('setCount', props.count + 1)
+  emit('update:count', props.count + 1)
 }
 
+// 处理选择
+const handleChoice = (value:any)=>{
+  
+  emit('update:choice', value)
+}
 
 
 </script>

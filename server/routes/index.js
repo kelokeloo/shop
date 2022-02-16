@@ -193,6 +193,39 @@ router.post('/api/login', (req, res, next)=>{
   }
 })
 
+// 购物车数据
+router.get('/api/shopCar', (req, res, next)=>{
+  res.send({
+    code: 200,
+    data: [
+      {
+        id: 0,
+        choice: true,
+        imgUrl: '/images/goods/太空人.webp',
+        title: '太空人',
+        price: 39,
+        count: 1
+      },
+      {
+        id: 1,
+        choice: false,
+        imgUrl: '/images/goods/鞋子.webp',
+        title: '鞋子',
+        price: 99,
+        count: 2
+      },
+      {
+        id: 2,
+        choice: false,
+        imgUrl: '/images/goods/旺仔牛奶.webp',
+        title: '旺仔牛奶',
+        price: 7,
+        count: 10
+      },
+    ]
+  })
+})
+
 
 
 module.exports = router;

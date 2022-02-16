@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="handleClick">
     <span class="iconfont icon-xuanze"
       :class="choice ? 'active' : ''"
     ></span>
@@ -16,9 +16,13 @@ interface propApi {
   choice: boolean
 }
 
-defineProps<propApi>()
+const props = defineProps<propApi>()
 
+const emit = defineEmits(['update:choice'])
 
+const handleClick = ()=>{
+  emit('update:choice', !props.choice)
+}
 
 
 </script>
