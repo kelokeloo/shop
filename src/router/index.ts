@@ -1,3 +1,4 @@
+import path from "path/posix";
 import { createRouter, createWebHistory,
   RouteRecordRaw } from "vue-router";
 
@@ -19,6 +20,17 @@ const routes: Array<RouteRecordRaw> = [
   {path: '/search', name: 'search', component: ()=>import('@/views/search.vue')},
   {path: '/detail/:id', name: 'detail', component: ()=>import('@/views/detail/Detail.vue')},
   {path: '/login', name: 'login', component: ()=>import('@/views/login/login.vue')},
+  {path: '/login', name: 'login', component: ()=>import('@/views/login/login.vue')},
+  {
+    path: '/addr', 
+    name: 'addr', 
+    component: ()=>import('@/views/address/AddrShow.vue'),
+    children: [
+      { path: '', redirect: '/addr/addrshow'},
+      { path: 'addrshow', name: 'addrshow', component: ()=>import('@/views/address/AddrShow.vue')},
+      { path: 'addredit', name: 'addredit', component: ()=>import('@/views/address/AddrEdit.vue.vue')},
+    ]
+  }
 ]
 
 const router = createRouter({

@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddrCart: typeof import('./src/components/common/AddrCart.vue')['default']
     Cart1: typeof import('./src/components/common/Cart1.vue')['default']
     Cart2: typeof import('./src/components/common/Cart2.vue')['default']
     Choice: typeof import('./src/components/shopCar/Choice.vue')['default']
@@ -15,6 +16,7 @@ declare module 'vue' {
     GoodCard: typeof import('./src/components/shopCar/goodCard.vue')['default']
     GoodsList: typeof import('./src/components/common/GoodsList.vue')['default']
     Header: typeof import('./src/components/home/Header.vue')['default']
+    HeaderSlot: typeof import('./src/components/common/HeaderSlot.vue')['default']
     HotBox: typeof import('./src/components/home/HotBox.vue')['default']
     ListBox: typeof import('./src/components/common/ListBox.vue')['default']
     ShopCart: typeof import('./src/components/shopCar/shopCart.vue')['default']

@@ -10,7 +10,7 @@
 
     <div class="other">
       <ul>
-        <li>地址管理</li>
+        <li @click="handleAddrClick">地址管理</li>
       </ul>
     </div>
   </div>
@@ -55,6 +55,11 @@ const logout = ()=>{
   window.sessionStorage.removeItem('token')
   window.sessionStorage.removeItem('userName')
   store.setIsLogin(false)
+}
+
+// 跳转到地址页面
+const handleAddrClick = ()=>{
+  router.push('/addr')
 }
 
 

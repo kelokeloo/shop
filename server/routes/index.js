@@ -226,6 +226,46 @@ router.get('/api/shopCar', (req, res, next)=>{
   })
 })
 
+// 收货地址
 
+
+
+router.get('/api/addr', function(req, res, next) {
+  res.send({
+    code: 200,
+    data: {
+      default: 0,
+      addrs: [
+        {
+          id: 0,
+          name: '张三',
+          phone: 12345678910,
+          area: ()=>{
+            return ['北京市','丰台区', '永外大街']
+          },
+          addr: '车站路12号'
+        },
+        {
+          id: 1,
+          name: '李四',
+          phone: 12345678910,
+          area: ()=>{
+            return ['北京市','丰台区', '永外大街']
+          },
+          addr: '车站路12号'
+        },
+        {
+          id: 2,
+          name: '王五',
+          phone: 12345678910,
+          area: ()=>{
+            return ['北京市','丰台区', '永外大街']
+          },
+          addr: '车站路12号'
+        }
+      ]
+    }
+  })
+});
 
 module.exports = router;
