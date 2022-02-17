@@ -28,7 +28,7 @@
     
     <div class="totalPrice">
       <div>￥{{totalPrice}}</div>
-      <div v-if="!isEdit">支付</div>
+      <div v-if="!isEdit" @click="goToPay">支付</div>
       <div v-else
         @click="deleteGoods"  
       >删除</div>
@@ -48,6 +48,7 @@ import ChoiceVue from "../components/shopCar/Choice.vue";
 import { reactive, ref, computed } from "vue";
 import http from '../http/index'
 import globalStore from '../store/global'
+import router from "../router";
 
 interface propsApi {
   id: number,
@@ -80,8 +81,6 @@ const getShopCarData = ()=>{
       choicelist.push(item.choice!)
       countList.push(item.count!)
     })
-    console.log(listArray);
-    
   })
 }
 
@@ -105,7 +104,6 @@ const globalChoice = computed<boolean>({
 // 计算总价格
 const totalPrice = computed(()=>{
   let total = 0
-  console.log(listArray);
   
   listArray.forEach((item, index)=>{
     if(choicelist[index]){
@@ -127,6 +125,43 @@ const deleteGoods = ()=>{
       countList.splice(i, 1)
     }
   }
+}
+
+// 跳转到支付页面
+interface payData {
+  goodIds: number,
+  count: number, // 商品数量
+  imgUrl: string,
+  name: string,
+  price: number
+}
+
+const goToPay = ()=>{
+  // console.log(listArray);
+  // 整合支付商品
+  const payList: Array<payData> = []
+
+  choicelist.forEach((b, index)=>{
+    if(b){
+      payList.push({
+        goodIds: listArray[index].id,
+        count: countList[index],
+        imgUrl: listArray[index].imgUrl!,
+        name: listArray[index].title!,
+        price: listArray[index].price!
+      })
+    }
+  })
+  // console.log(payList);
+
+  // 存储到store中，并跳转到支付页
+
+  store.setPayListData(payList)
+
+
+  // 跳转到指定路由
+  if(store.payListData.length > 0)
+    router.push('/pay')
 }
 
 

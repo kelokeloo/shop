@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {path: '/category', component: ()=>import('@/views/Category.vue')},
-  {path: '/shopcar', component: ()=>import('@/views/ShopCar.vue')},
+  {path: '/shopcar', name: 'shopcar', component: ()=>import('@/views/ShopCar.vue')},
   {path: '/personal', component: ()=>import('@/views/Personal.vue')},
   {path: '/search', name: 'search', component: ()=>import('@/views/search.vue')},
   {path: '/detail/:id', name: 'detail', component: ()=>import('@/views/detail/Detail.vue')},
@@ -30,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
       { path: 'addrshow', name: 'addrshow', component: ()=>import('@/views/address/AddrShow.vue')},
       { path: 'addredit', name: 'addredit', component: ()=>import('@/views/address/AddrEdit.vue.vue')},
     ]
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    component: ()=>import('@/views/pay/Pay.vue')
   }
 ]
 
@@ -37,5 +42,31 @@ const router = createRouter({
   routes,
   history: createWebHistory()
 })
+
+// 导航守卫
+
+router.beforeEach((to, from, next)=>{
+  let AuthRouterName = ['shopcar', 'addrshow', 'addredit']
+  console.log(to.name);
+  
+  if(AuthRouterName.includes(to.name as unknown as string)){
+    // 判断是否登录
+    let token = window.sessionStorage.getItem('token')
+    if(token){
+      console.log('已经登陆可以继续访问');
+      next()
+    }
+    else{
+      console.log('需要登录', to.name);
+      next('/login')
+    }
+  }
+  else{
+    next()
+  }
+  
+})
+
+
 
 export default router

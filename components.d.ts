@@ -19,6 +19,7 @@ declare module 'vue' {
     HeaderSlot: typeof import('./src/components/common/HeaderSlot.vue')['default']
     HotBox: typeof import('./src/components/home/HotBox.vue')['default']
     ListBox: typeof import('./src/components/common/ListBox.vue')['default']
+    PayGoodCart: typeof import('./src/components/common/PayGoodCart.vue')['default']
     ShopCart: typeof import('./src/components/shopCar/shopCart.vue')['default']
     ShowBox1: typeof import('./src/components/home/ShowBox1.vue')['default']
     Tarbar: typeof import('./src/components/common/Tarbar.vue')['default']

@@ -24,7 +24,7 @@ interface addrApi {
   phone?: number,
   area?: Array<string>,
   addr?: string,
-  isDefault: boolean
+  isDefault?: boolean
 }
 
 const props = withDefaults(defineProps<addrApi>(), {
