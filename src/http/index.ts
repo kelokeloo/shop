@@ -10,6 +10,17 @@ const http = axios.create({
 // 请求拦截器
 http.interceptors.request.use((config: AxiosRequestConfig)=>{
   NProgress.start();
+  // 携带token
+  const token = window.sessionStorage.getItem('token')
+  if(token){
+    Object.defineProperty(config.headers, 'Authorization', {
+      configurable: true,
+      enumerable: true,
+      value: 'Bearer ' + token,
+      writable: true
+    })
+  }
+  
   
   return config
 }, ()=>{

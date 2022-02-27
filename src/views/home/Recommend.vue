@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="recRef" class="recommendBox">
     <!-- 轮播 -->
     <div class="carousel">
       <el-carousel height="150px" arrow="always" autoplay>
@@ -48,7 +48,7 @@ export default defineComponent({
 import ShowBox from '@/components/home/ShowBox1.vue'
 import Cart1 from '@/components/common/Cart1.vue'
 import Cart2 from '@/components/common/Cart2.vue'
-import { reactive } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 
 import http from '../../http/index'
 import globalStore from '../../store/global'
@@ -122,23 +122,46 @@ interface guessGoodsApi {
 
 const guessGoodsData = reactive<guessGoodsApi[]>([])
 
+const cacheData: guessGoodsApi[] = []
+
 const getGuessGoodsData = async()=>{
   const res = await http.get('/api/home/recommend/guess')
   
   ;(res.data as Array<guessGoodsApi>).forEach(item=>{
     item.imgUrl = store.serverUrl + item.imgUrl
-    guessGoodsData.push(item)
-  })
-  
+    cacheData.push(item)
+  }) 
+  addData()
 }
+
+// 触发滚动事件的时候，如果滚到底部之后，将数据放进guessGoodsData
+
+const addData = ()=>{
+  // 选择10项数据加入guessGoodsData
+  const cacheLength = cacheData.length
+  const guessLength = guessGoodsData.length
+  console.log(cacheLength, guessLength);
+  
+  const offset = cacheLength - guessLength <= 10 ? cacheLength : guessLength + 10
+  for(let i = guessLength; i < offset; i++){
+      guessGoodsData.push(cacheData[i])
+  }
+}
+
+
 
 getGuessGoodsData()
 
 
 
 
+
 </script>
 <style scoped lang="scss">
+#main{
+  overflow: hidden;
+}
+
 .carousel {
   border-radius: 5px;
   overflow: hidden;

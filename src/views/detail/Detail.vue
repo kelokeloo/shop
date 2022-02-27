@@ -96,10 +96,12 @@ const back = ()=>{
 }
 
 
-// keep-alive
+
 onUnmounted(()=>{
   console.log('销毁组件');
 })
+
+// keep-alive
 
 onActivated(()=>{
   const newGoodId = Number(route.params.id);

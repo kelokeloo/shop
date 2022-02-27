@@ -47,7 +47,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next)=>{
   let AuthRouterName = ['shopcar', 'addrshow', 'addredit']
-  console.log(to.name);
   
   if(AuthRouterName.includes(to.name as unknown as string)){
     // 判断是否登录

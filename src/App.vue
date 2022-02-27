@@ -3,7 +3,7 @@
     <router-view v-slot="{ Component }">
       <transition>
         <keep-alive include="detail">
-          <component :is="Component" />
+          <component :is="Component"></component>
         </keep-alive>
       </transition>
     </router-view>

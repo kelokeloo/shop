@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderVue></HeaderVue>
-    <div class="main">
+    <div class="main" id="main">
       <div class="tab">
         <!-- tab -->
         <el-tabs v-model="tabActive"  @tab-click="handleTabClick">
@@ -27,7 +27,7 @@ import HeaderVue from '../components/home/Header.vue';
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
-import { get } from 'http';
+// import { get } from 'http';
 
 interface tabPaneApi{
   id: number,
