@@ -9,10 +9,10 @@
 * 使用token进行登录认证
 * 使用express-generator搭建了一个简易的后台
 # 预览图
-![img]('./public/首页.jpg')
-![img]('./public/分类页.jpg')
-![img]('./public/购物车.jpg')
-![img]('./public/搜索页面.jpg')
+![img]('public/分类页.jpg')
+![img]('public/分类页.jpg')
+![img]('public/购物车.jpg')
+![img]('public/搜索页面.jpg')
 
 
 
