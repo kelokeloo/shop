@@ -169,29 +169,7 @@ router.get('/api/detail/:id', function(req, res, next) {
 
 
 
-router.post('/api/login', (req, res, next)=>{
-  const { account, password } = req.body
-  console.log(account, password);
-  if(account === 'admin' && password === '1'){
-    res.send({
-      code: 200,
-      data: {
-        msg: 'success',
-        token: 'successToken',
-        userName: 'kelokeloo'
-      }
-    })
-  }
-  else {
-    res.send({
-      code: 404,
-      data: {
-        msg: 'failed',
-        token: ''
-      }
-    })
-  }
-})
+
 
 // 购物车数据
 router.get('/api/shopCar', (req, res, next)=>{
